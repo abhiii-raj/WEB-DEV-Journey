@@ -8,11 +8,11 @@ const connection = mysql.createConnection({
 });
 
 let query = "SELECT * FROM Employee"; 
-
+//either you can make a variable to store the query or pass it directly
 try{
     connection.query(query, (err, result) =>{
         if(err) throw err;
-        console.log(result);
+        console.log(result); //result is an array
 
         connection.end();
     });

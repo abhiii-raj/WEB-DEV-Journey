@@ -32,3 +32,65 @@ first install mysql package
         > when you are in the mysql env clear command won't run
           use system cls; command and
           exit; to exit from the sql env;
+
+
+ ALL THE THINGS GET SYNCED WITH EACH OTHER(SERVER <-> DB);
+ (agar command line se kuch chher-chhar huwi hai woh workbench per bhi reflect hua hoga)
+
+
+# now we will check how to add multiple records into a table using nodejs
+
+inside the query that you have written only write one placeholder
+let query = "INSERT INTO Employee (id, name, email, password) VALUES ?";
+
+and we will pass an array of arrays
+
+let users[] =[[user1],[user2],[user3]..... [usern]];
+    try{
+    connection.query(query,[users] (err, result) =>{
+        if(err) throw err;
+        console.log(result); //result is an array
+
+        connection.end();
+    });
+}catch(err){
+    console.log(err);
+}
+
+
+# now we'll look how to add multiple recorde using faker
+    to make this happen we'll use faker package that gives bunch of records.
+      to intall -> npm i @faker-js/faker
+    then require the package 
+    const { faker } = require('@faker-js/faker');
+
+    faker gives a function getRandom user which by default gives an object but
+    we modify it to give the array.
+        let getRandomUser = () => {
+            return[
+                faker.string.uuid(),
+                faker.internet.username(),
+                faker.internet.email(),
+                faker.internet.password()
+            ];
+        };
+
+    now we will make a data array which will store the 100 arrays which will be
+    return by getRandomUser() function
+        let data = [];
+        for(let i = 1 ; i<=100 ; i++){
+            data.push(getRandomUser());
+        }
+
+     execute the query using the method.
+        try{
+            connection.query(query,[data], (err, result) => {
+                if(err) throw err;
+                console.log(result);
+
+                connection.end();        
+            });
+        }catch(err){
+            System.out.println(err);
+        }
+            

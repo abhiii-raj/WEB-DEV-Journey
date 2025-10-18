@@ -13,3 +13,12 @@ INSERT INTO Employee (id, name, email, password) VALUES
 
 SELECT * FROM Employee;
 
+CREATE TABLE IF NOT EXISTS myuser(
+    id VARCHAR(50) PRIMARY KEY,
+    username VARCHAR(50) NOT NULL,
+    email VARCHAR(50) NOT NULL,
+    pass VARCHAR(50) NOT NULL
+);
+
+-- ALTER TABLE myuser
+-- RENAME COLUMN pass TO password;
