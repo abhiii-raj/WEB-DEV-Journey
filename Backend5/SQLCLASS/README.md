@@ -141,5 +141,86 @@ install express, uuid and nodemon in aur SQLCLASS
     res.send(result[0]) -> {count(*): 100};
     res.send(result[0]["count(*)]); -> 100;
 
+# we will move further and display all the informations and can     manipualte using express, ejs, and path require ;
+all these with the help of routing
 
-    
+before creating any route first test the route
+
+app.get("/user" (req, res) =>){
+    res.send("am i visible...");
+};
+
+# In the previous section we have created a home route to get the total user in the database
+npm install ejs
+
+Get / -> fetch and show total number of users on our app
+
+first require path 
+const path = require("path);
+
+app.set("views engine","ejs");
+app.set("views",path.join(__dirname,"views"));
+
+all the ejs file related to a specific route will be contained inside the directory views, which is present in the same directory...
+
+app.get("/", (req, res) =>{
+    let q = "SELECT COUNT(*) FROM myuser";
+    try{
+        connection.query(q, (err, result) =>{
+            if(err) throw err;
+            let count = result[0].["COUNT(*)"];
+            res.render("home.ejs", { count });
+        });
+    }catch(err){
+        console.log(err);
+        res.send("some error in database");
+    }
+});
+
+now in the views directory create a home.ejs file
+create a html boiler plate and
+inside the body tag
+<h2> Total count of the users : <%= count %></h2>
+<button> Join us today </button> //to make interactive.
+
+Get /user -> fetches and show all the data of the users
+such as id, username and email not password (confidential things)
+
+app.get("/user",(req, res) =>{
+    let q = "SELECT id, username, email FROM myuser";
+    try{
+        connection.query(q, (err, users) => {
+            if(err) throw err;
+            res.render("showusers.ejs", {users})
+        });
+    }catch(err){
+        console.log(err);
+        res.send("some error occured in database");
+    }
+});
+
+now in the views directory create a file showusers.ejs and make a simple boiler plate and within the body tag make a table of a 1st row as id, name , email.
+
+                    <style>
+                        table, th, td ,tr{
+                            border: 1px solid black;
+                        }
+                    </style>
+
+                    <table>
+                        <tr>
+                            <td> id </td>
+                            <td> username </td>
+                            <td> email </td>
+                        </tr>
+                    </table>
+
+    after this just below the table tag make a for loop to all the users
+
+                   <% for(user in users){ %>
+                        <tr>
+                            <td><%= user.id %></td>
+                            <td><%= user.username %></td>
+                            <td><%= user.email %>></td>
+                        </tr>
+                  <%  } %>
