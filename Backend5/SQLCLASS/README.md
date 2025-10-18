@@ -93,4 +93,53 @@ let users[] =[[user1],[user2],[user3]..... [usern]];
         }catch(err){
             System.out.println(err);
         }
-            
+        
+
+
+# now we will step forward to use express and rest api's with databses, and ROUTING.
+
+
+install express, uuid and nodemon in aur SQLCLASS
+    > npm i express
+    > npm i uuid
+    > npm i nodemon
+
+    require express then
+    const express = require("express");
+    const app = express();
+
+    implement
+
+    app.get("/", (req, res) =>{
+        res.send("welcome to homepage..")
+    });
+
+    app.listen("8080",() =>{
+        console.log("Server is listening to port..");
+    });
+
+    install nodemon and check the server is running or not
+    
+    then update the app.get() method;
+    because i want when the get request comes on "/" then total number of user get printed.
+
+    app.get("/", (req, res) => {
+        let q = "SELECT COUNT(*) FROM myuser";
+        try{
+            connection.query(q,(err, result) =>{
+                if(err) throw err;
+                console.log(result);
+                res.send(result);
+                <!-- connection.end(); --> if written error will occur.
+            });
+        }catch(err){
+            console.log(err);
+        }
+    });
+
+    res.send(result); -> [{count(*): 100}];
+    res.send(result[0]) -> {count(*): 100};
+    res.send(result[0]["count(*)]); -> 100;
+
+
+    
