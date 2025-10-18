@@ -28,6 +28,7 @@ first install mysql package
             "C:\Program Files\MySQL\MySQL Server 8.0\bin\mysql.exe" -u root -p
         > in your terminal mysql> appears this will indicate that you are in the realm of sql 😅.
         > then run command -> source fileName.sql;
+            and make sure to run from that directory where your file resides...
         > when you are in the mysql env clear command won't run
-          use system.cls command
-          and exit; to exit from the sql env;
+          use system cls; command and
+          exit; to exit from the sql env;
