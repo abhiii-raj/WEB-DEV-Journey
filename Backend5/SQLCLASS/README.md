@@ -151,12 +151,14 @@ before creating any route first test the route
                     res.send("am i visible...");
                 };
 
+# CREATING OUR OWN ROUTE
+
 # In the previous section we have created a home route to get the total user in the database
                 npm install ejs
 
 Get / -> fetch and show total number of users on our app
 first require path
- 
+
                 const path = require("path);
                 app.set("views engine","ejs");
                 app.set("views",path.join(__dirname,"views"));
@@ -224,3 +226,24 @@ now in the views directory create a file showusers.ejs and make a simple boiler 
                             <td><%= user.email %>></td>
                         </tr>
                   <%  } %>
+
+GET /user/:id/edit -To get form to edit the username, based on id.
+This form will require a password..
+
+for this to happen , make a button of edit alonside of every user...
+   
+inside the showusers.ejs
+inside the for loop we will make a form tag and within the form tag add a button 
+
+            <form method = ">
+
+            </form>
+
+Edit ke liye 2 request jaati hai
+Put request -> pura user edit hota hai
+patch request -> kuch part edit hota hai
+
+update route;
+1> search user based on id;
+2> check if form password == user password;
+3> update the username
