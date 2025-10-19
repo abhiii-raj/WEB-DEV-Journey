@@ -6,7 +6,7 @@ first install mysql package
 # require the package and store it int mysql object;
     const mysql = require("mysql2");
 
-# create a connection using createConnection("query", callback) function
+# create a connection using createConnection() function
     const connection = mysql.createConnection({
     host: "localhost",
     user: "yourUsername", check in your workbench
