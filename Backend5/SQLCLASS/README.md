@@ -147,9 +147,9 @@ all these with the help of routing
 
 before creating any route first test the route
 
-app.get("/user" (req, res) =>){
-    res.send("am i visible...");
-};
+                app.get("/user" (req, res) =>){
+                    res.send("am i visible...");
+                };
 
 # In the previous section we have created a home route to get the total user in the database
 npm install ejs
