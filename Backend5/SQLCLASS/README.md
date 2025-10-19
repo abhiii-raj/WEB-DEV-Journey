@@ -7,12 +7,12 @@ first install mysql package
     const mysql = require("mysql2");
 
 # create a connection using createConnection() function
-    const connection = mysql.createConnection({
-    host: "localhost",
-    user: "yourUsername", check in your workbench
-    database: "databaseName",  jo db ke saath khelna hai
-    password: "password"  password of your workbench
-});
+            const connection = mysql.createConnection({
+                host: "localhost",
+                user: "yourUsername", check in your workbench
+                database: "databaseName",  jo db ke saath khelna hai
+                password: "password"  password of your workbench
+            });
 
 # to work with SQL , i can do it in four ways
    1-> using workbench.
