@@ -58,7 +58,7 @@ and we will pass an array of arrays
                 }
 
 
-# now we'll look how to add multiple recorde using faker
+# now we'll look how to add multiple records using faker package
     to make this happen we'll use faker package that gives bunch of records.
       to intall -> npm i @faker-js/faker
     then require the package 
