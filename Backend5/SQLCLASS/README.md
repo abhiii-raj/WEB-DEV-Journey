@@ -83,6 +83,7 @@ and we will pass an array of arrays
         }
 
      execute the query using the method.
+        let query = "INSERT INTO tableName (all the columns) VALUES ?";
         try{
             connection.query(query,[data], (err, result) => {
                 if(err) throw err;
