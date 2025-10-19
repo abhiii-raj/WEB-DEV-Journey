@@ -155,7 +155,8 @@ before creating any route first test the route
                 npm install ejs
 
 Get / -> fetch and show total number of users on our app
-first require path 
+first require path
+ 
                 const path = require("path);
                 app.set("views engine","ejs");
                 app.set("views",path.join(__dirname,"views"));
