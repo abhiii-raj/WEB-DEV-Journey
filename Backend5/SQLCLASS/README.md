@@ -101,46 +101,46 @@ and we will pass an array of arrays
 
 
 install express, uuid and nodemon in aur SQLCLASS
-    > npm i express
-    > npm i uuid
-    > npm i nodemon
+                > npm i express
+                > npm i uuid
+                > npm i nodemon
 
     require express then
-    const express = require("express");
-    const app = express();
+                const express = require("express");
+                const app = express();
 
     implement
 
-    app.get("/", (req, res) =>{
-        res.send("welcome to homepage..")
-    });
+                app.get("/", (req, res) =>{
+                    res.send("welcome to homepage..")
+                });
 
-    app.listen("8080",() =>{
-        console.log("Server is listening to port..");
-    });
+                app.listen("8080",() =>{
+                    console.log("Server is listening to port..");
+                });
 
     install nodemon and check the server is running or not
     
     then update the app.get() method;
     because i want when the get request comes on "/" then total number of user get printed.
 
-    app.get("/", (req, res) => {
-        let q = "SELECT COUNT(*) FROM myuser";
-        try{
-            connection.query(q,(err, result) =>{
-                if(err) throw err;
-                console.log(result);
-                res.send(result);
-                <!-- connection.end(); --> if written error will occur.
-            });
-        }catch(err){
-            console.log(err);
-        }
-    });
+                app.get("/", (req, res) => {
+                    let q = "SELECT COUNT(*) FROM myuser";
+                    try{
+                        connection.query(q,(err, result) =>{
+                            if(err) throw err;
+                            console.log(result);
+                            res.send(result);
+                            <!-- connection.end(); --> if written error will occur.
+                        });
+                    }catch(err){
+                        console.log(err);
+                    }
+                });
 
-    res.send(result); -> [{count(*): 100}];
-    res.send(result[0]) -> {count(*): 100};
-    res.send(result[0]["count(*)]); -> 100;
+                res.send(result); -> [{count(*): 100}];
+                res.send(result[0]) -> {count(*): 100};
+                res.send(result[0]["count(*)]); -> 100;
 
 # we will move further and display all the informations and can     manipualte using express, ejs, and path require ;
 all these with the help of routing
@@ -152,53 +152,51 @@ before creating any route first test the route
                 };
 
 # In the previous section we have created a home route to get the total user in the database
-npm install ejs
+                npm install ejs
 
 Get / -> fetch and show total number of users on our app
-
 first require path 
-const path = require("path);
-
-app.set("views engine","ejs");
-app.set("views",path.join(__dirname,"views"));
+                const path = require("path);
+                app.set("views engine","ejs");
+                app.set("views",path.join(__dirname,"views"));
 
 all the ejs file related to a specific route will be contained inside the directory views, which is present in the same directory...
 
-app.get("/", (req, res) =>{
-    let q = "SELECT COUNT(*) FROM myuser";
-    try{
-        connection.query(q, (err, result) =>{
-            if(err) throw err;
-            let count = result[0].["COUNT(*)"];
-            res.render("home.ejs", { count });
-        });
-    }catch(err){
-        console.log(err);
-        res.send("some error in database");
-    }
-});
+                app.get("/", (req, res) =>{
+                    let q = "SELECT COUNT(*) FROM myuser";
+                    try{
+                        connection.query(q, (err, result) =>{
+                            if(err) throw err;
+                            let count = result[0].["COUNT(*)"];
+                            res.render("home.ejs", { count });
+                        });
+                    }catch(err){
+                        console.log(err);
+                        res.send("some error in database");
+                    }
+                });
 
 now in the views directory create a home.ejs file
 create a html boiler plate and
 inside the body tag
-<h2> Total count of the users : <%= count %></h2>
-<button> Join us today </button> //to make interactive.
+                <h2> Total count of the users : <%= count %></h2>
+                <button> Join us today </button> //to make interactive.
 
 Get /user -> fetches and show all the data of the users
 such as id, username and email not password (confidential things)
 
-app.get("/user",(req, res) =>{
-    let q = "SELECT id, username, email FROM myuser";
-    try{
-        connection.query(q, (err, users) => {
-            if(err) throw err;
-            res.render("showusers.ejs", {users})
-        });
-    }catch(err){
-        console.log(err);
-        res.send("some error occured in database");
-    }
-});
+                app.get("/user",(req, res) =>{
+                    let q = "SELECT id, username, email FROM myuser";
+                    try{
+                        connection.query(q, (err, users) => {
+                            if(err) throw err;
+                            res.render("showusers.ejs", {users})
+                        });
+                    }catch(err){
+                        console.log(err);
+                        res.send("some error occured in database");
+                    }
+                });
 
 now in the views directory create a file showusers.ejs and make a simple boiler plate and within the body tag make a table of a 1st row as id, name , email.
 
