@@ -45,17 +45,17 @@ let query = "INSERT INTO Employee (id, name, email, password) VALUES ?";
 
 and we will pass an array of arrays
 
-let users[] =[[user1],[user2],[user3]..... [usern]];
-    try{
-    connection.query(query,[users] (err, result) =>{
-        if(err) throw err;
-        console.log(result); //result is an array
+            let users[] =[[user1],[user2],[user3]..... [usern]];
+                try{
+                    connection.query(query,[users] (err, result) =>{
+                        if(err) throw err;
+                        console.log(result); //result is an array
 
-        connection.end();
-    });
-}catch(err){
-    console.log(err);
-}
+                        connection.end();
+                    });
+                }catch(err){
+                    console.log(err);
+                }
 
 
 # now we'll look how to add multiple recorde using faker
