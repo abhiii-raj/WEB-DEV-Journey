@@ -43,10 +43,10 @@ This object provide information and control over the current node.js process
         we can also change or manipulate using process object.
 
     A special property of process object is
-    argv -> argument vector
+    argsv -> argument vector
     An array that contains command line arguments passed when starting the node.js process.
     
-            process.argv 
+            process.argsv 
         
             by default two values are contained
             1. Path to the executeable Node.exe
@@ -55,7 +55,7 @@ This object provide information and control over the current node.js process
     It is used when you have written some code but want to pass argument using command line..
             
             inside index.js
-            let args = process.argv;
+            let args = process.argsv;
 
             for(let i = 2 ;i<args.length ;i++>){   <!-- started the loop from 2,i don't want the paths to be printed with file -->
                 console.log("Hello, ", args[i]);
@@ -87,3 +87,15 @@ In order to use functions, methods , properties of another file into other file,
 
             const g = 9.8;
             const pi = 3.14;
+
+    for this module.exports() is used , it is an object which makes some file available to other files.if nothing is passed and that file is required then empty object is passed.
+
+            module.exports() = "Hello";
+
+            require() -> a built-in function to include external modules exist in a sepearte file.
+
+        for example refer index1.js file
+
+
+# EXPORT IN DIRECTORIES
+        
