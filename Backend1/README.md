@@ -8,6 +8,7 @@ Node JS -> It is basically a JavaScript runtime environment which allows JS to r
 Just type node on the terminal or git bash to go into the REPL(Read Evaluate Print Loop);
         node
 You can run all the Js commands
+
         1+2  <!-- sum got printed -->
         console.log("Ka haal ba")   <!-- string got printed -->
         "Naa " + "Manba"  <!-- both string got concatenate and result will be printed-->
@@ -148,4 +149,22 @@ no need to download npm manually, it get downloaded along with the node
                 run npm on your terminal from any directory
 
                 you will get a bunch of commands list that you can use for your project
-   
+
+# INSTALLING PACKAGES USING NPM
+When you want to install the packages for your project , that is writeen by someone else but you want to use it
+        
+        npm install packageName or npm i packageName (i is basically alias for install)
+
+let's create another directory to use packages
+
+It is very important to know in which directory you have to or in which directory you have installed the package
+because the scope of package is limited to that directory only..
+
+Let's create a Figlet directory
+
+        npm i figlet  <!-- install the package in figlet directory -->
+
+        one folder and two json file is created..
+
+        node modules -> it is a folder that contains dependency of our project.
+        package.json -> 
