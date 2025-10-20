@@ -1,0 +1,15 @@
+{
+  "name": "backend1",
+  "version": "1.0.0",
+  "description": "Node JS -> It is basically a JavaScript runtime environment which allows JS to run outside the browser console.\r         -> Can be used in technologies but widely used in server side programming \r            (Backend ko build karne ke liye mostly use hota hai)..\r         -> Not a language, not a library and not a Framework..",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Abhi Raj",
+  "license": "ISC",
+  "dependencies": {
+    "random-words": "^1.2.0"
+  },
+  "type":"module"
+}

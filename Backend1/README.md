@@ -230,3 +230,38 @@ but when you install a package gloablly you can manage it wherever you wish to..
 
 
 # import v/s require
+There's not only way to use packages in our code.
+Till now we are only using the require and module.exports to use the packages that we have just installed
+
+Another way of doing the same thing is we import the packages..
+         
+        import {sum} from "./math.js";
+
+In the whole either we do require the packages or we just import it, there will not be any condition
+that we are doing both the things in the project....
+
+        VIDHI KE VIDHAN KE KHILAF HAI....
+
+To import any module you have to first export properties and functions 
+
+        under the math.js file
+        export const sum = (a, b) => a+b;
+        export const g = 9.8;
+
+        in index file
+        import { sum , g } from "./math.js";
+
+        Abhi ham itna likhe ke sum aur g use karenge toh error aayegi..
+        Sirf import and export karne se chize kaam nahi karengi..
+        In package.json we have to include "type": "module";
+
+It is because to load an E.S Module , one must have to set "type": "module" in package.json and use .mjs extension
+
+
+        -> require is older and import is new
+        -> With import we can selectively load only the pieces we need, which can save memory.
+           in require we cant select things.
+        -> Loading is synchronous with require but with import it is asynchronous.
+
+-------------------------x------------------------------x---------------------------x---------------------x-----------------------
+
