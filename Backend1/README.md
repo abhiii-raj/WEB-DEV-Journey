@@ -98,4 +98,18 @@ In order to use functions, methods , properties of another file into other file,
 
 
 # EXPORT IN DIRECTORIES
-        
+If you want to require some modules from other files in the same directory then we have discussed above.
+Now we will export modules present in other directory..
+
+In the Students directory , there are three students information and i want to require all these students, then in that directory i have to create a file index.js
+
+                index.js requires Abhi.js , shubh.js, shubhu.js
+
+and i want this Students directory is required in index2.js , we simply write 
+
+                const Student  = require("./Students");
+                here Student will be an array of objects 
+
+
+
+
