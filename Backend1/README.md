@@ -202,3 +202,31 @@ check FigletDir to work with a package.
 
         run node inde.js <!-- using the terminal make sure that your are in the correct directory -->
 
+# Why package.sjon is most important ?
+Suppose you have to send your code to some other developers then there's no need of sending all th three files 
+as the package.json contains all the descriptive and functional dependency for the project.
+    
+        bas package.json hai saath toh chinta ki kya hai baat
+        simply go to cwd 
+        and run ---   npm init
+        all the dependencies got reinstalled even get deleted by mistake.
+        Agar aapka khud ka package.json banana hai for any directory run npm init
+
+        kal ko jaake aga rkoi dependency install hogi toh woh sab yahi jaake store hogi
+
+
+# LOCAL V/S GLOBAL INSTALLATION
+If you install any package locally then it can work in that directrory you can't use it anywhere else outside that directory.
+
+but when you install a package gloablly you can manage it wherever you wish to....
+
+        npm i -g packageName <!-- just add a flag -g -->
+
+        still you can't be able to work with that package until you linked it
+        
+        for linking 
+        
+        npm link packageName
+
+
+# import v/s require
