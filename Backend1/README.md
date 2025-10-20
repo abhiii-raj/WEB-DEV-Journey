@@ -166,5 +166,39 @@ Let's create a Figlet directory
 
         one folder and two json file is created..
 
-        node modules -> it is a folder that contains dependency of our project.
-        package.json -> 
+        1> node modules -> it is a folder that contains every installed dependency of our project.
+                        (jitne bhi packages , api's aur bhi use ho rhe h in your project iss folder mein honge)
+                        node modules apne aap ban jaata hai khud se nahi banana padta
+        
+        2> package-lock.json -> it records the exact version of installed dependency,
+                             including it's sub-dependency and their versions
+
+                isse ache se samjahte hai
+                if I need a package A for my project , we will download it using npm i A
+                and this package needs B to work, so this B also get installed along with package A.
+
+        3> package.json -> this file contains descriptive and functional metadata about a project, 
+                                such as name, version and dependencies
+
+
+        OUT OF 3 , THE MOST IMPORTANT FILES IS package.json.
+
+To work with figlet create an index.js file in your FigletDir 
+check FigletDir to work with a package.
+
+        
+        const figlet = require("figlet")  
+        <!-- in the double quote we will not use any directory related things for any packages,
+        packages ke liye ha yeh sab nahi likhte  -->
+
+        figlet("SHUBHU", function (err, data) {
+            if (err) {
+              console.log("Something went wrong...");
+              console.dir(err);
+              return;
+            }
+            console.log(data);
+        });
+
+        run node inde.js <!-- using the terminal make sure that your are in the correct directory -->
+
