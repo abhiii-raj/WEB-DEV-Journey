@@ -110,6 +110,42 @@ and i want this Students directory is required in index2.js , we simply write
                 const Student  = require("./Students");
                 here Student will be an array of objects 
 
+                BACKEND1
+                   |--Students
+                   |      |--Abhi.js
+                   |      |--shubh.js
+                   |      |--shubhu.js
+                   |--index2.js
 
 
 
+now we are moving forward....
+
+# NPM (NODE PACKAGE MANAGER)
+NPM is the standard package manager for Node.js
+1> A package manager.
+        It is the library of packages (it is not exactly a library but we can imagine it for analogy)
+                it contains various packages like
+                express , react etc
+        
+                Packages -> code writeen by developers that we use by requiring.
+                        (Actual code hai jisse bahut saare developers world wide use kar rhe hai)
+2> CommandLine Tool.
+        With the help of Command line we can download many packages that provides us to download it any version,
+        and can manipulate information related to package.
+
+        command line ke through in saare packages ko dusre developers tak access karate hai
+
+3> Online registry.
+
+NPM kya hai?
+NPM ek digital bazaar hai jahan developers ke liye hazaaron packages available hain — har ek ek chhoti app jaisi hoti hai jo kisi specific kaam ke liye bani hoti hai. Jaise Play Store mein productivity apps, games, aur tools hote hain, waise hi NPM mein backend tools, frontend frameworks, testing libraries, aur aur bhi bahut kuch hota hai.
+
+no need to download npm manually, it get downloaded along with the node
+
+                to verify 
+                
+                run npm on your terminal from any directory
+
+                you will get a bunch of commands list that you can use for your project
+   
