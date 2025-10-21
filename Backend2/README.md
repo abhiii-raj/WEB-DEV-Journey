@@ -64,7 +64,7 @@ Require the express
                 <!-- It accept two parameters 
                 port -> on which port number the request is coming. (aisa point jaha ahamara client server ke saath baat karega).
                 callback -> a function passed as an argument and is executed when a specific event or condition occurs
-                within a parent function  (jaise hi request aagayi ab kya execute hona chahiye-->
+                within a parent function  jaise hi request aagayi ab kya execute hona chahiye-->
 
 After executing app.listen() a continous process has begun, we can also say that server has started which constantly listen for the requests
 
