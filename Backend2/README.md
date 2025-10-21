@@ -17,6 +17,9 @@ It is used for server side programming (backend ko build karne ke liye use hoti 
               client----------------------------------- server
             (frontend)         <- response <-          (backend)
 
+            Express is a package in the npm can be install using npm
+
+            npm install express or npm i express
 # 4 Major uses for Express
 
             1-> Listen for incoming request..
@@ -25,3 +28,7 @@ It is used for server side programming (backend ko build karne ke liye use hoti 
                 Parse the request based on Node.js (jaruri nahi hai kis type ka request aayega).
             3-> Match responses with routes.(routes -> alag alag raste jinper ham request bhej sakte hai..).
                 On which path does the request arrives and it matches the request as per that route..
+            4-> Response
+                Sends the suitable response based on the request.
+
+
