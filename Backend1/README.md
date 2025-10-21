@@ -1,0 +1,267 @@
+# FIRST LECTURE FOR THE BACKEND..
+# INTRODUCTION
+Node JS -> It is basically a JavaScript runtime environment which allows JS to run outside the browser console.
+        -> Can be used in technologies but widely used in server side programming 
+           (Backend ko build karne ke liye mostly use hota hai)..
+        -> Not a language, not a library and not a Framework..
+
+Just type node on the terminal or git bash to go into the REPL(Read Evaluate Print Loop);
+        node
+You can run all the Js commands
+
+        1+2  <!-- sum got printed -->
+        console.log("Ka haal ba")   <!-- string got printed -->
+        "Naa " + "Manba"  <!-- both string got concatenate and result will be printed-->
+
+In the node ennvironment you can't run the terminal commands like ls, pwd , clear e.t.c because you have chnages the environment
+        type .help in the node env to get the help related to node.
+
+# Run files using node
+In the backend folder i have created an index.js file, which contains
+        conosle.log("Hii Shubhu...");
+Open the terminal go into that directory where the index.js file actually resides, If you will run from different directory then you will get error.
+
+        then write on the terminal
+        node index.js  <!-- Hii Shubhu will be printed... -->
+        
+        <!-- take some example and do it by yourself,
+        Print a table of a number using node.. -->
+
+One thing to remember , you can't manipulate DOM elements using node , because they are the part of your browser.
+        Node doesn't have access to browser APIs like document, window, or navigator.
+        These objects are part of the browser's environment, not the Node runtime.
+
+
+# PROCESS Objects in node
+This object provide information and control over the current node.js process
+        abhi jo kaam chal rha hai uske baare mein informantion contains karke rakhega
+        run process on your node env(REPL), you will get a bunch of properties and functions like,
+            process.release
+            process.version
+            process.cwd() <!-- print the directory in which you are working -->
+
+        itna hi nahi,
+        we can also change or manipulate using process object.
+
+    A special property of process object is
+    argsv -> argument vector
+    An array that contains command line arguments passed when starting the node.js process.
+    
+            process.argsv 
+        
+            by default two values are contained
+            1. Path to the executeable Node.exe
+            2. Path of the current working file.
+
+    It is used when you have written some code but want to pass argument using command line..
+            
+            inside index.js
+            let args = process.argsv;
+
+            for(let i = 2 ;i<args.length ;i++>){   <!-- started the loop from 2,i don't want the paths to be printed with file -->
+                console.log("Hello, ", args[i]);
+            }
+
+        open the terminal, go the path where the index.js file resides,then 
+
+            node index.js shubh, shubham, suman, shubhu 
+
+        and then hit enter.
+            <!-- output -->
+            Hello, shubh
+            Hello, shubham
+            Hello, suman
+            Hello, Shubhu
+
+# EXPORT in files
+In order to use functions, methods , properties of another file into other file, We will cover these aspects into this section
+            
+            index.js (main file) <--------------------------- maths.js (contains math related functions & prop)
+
+            index.js wants to use the functions and prop of maths.js 
+            it will take the help of module.exports()
+
+            orignally in maths.js
+            const sum = (a, b) => a+b;
+            const mul = (a, b) => a*b;
+            const sub = (a, b) => a-b;
+
+            const g = 9.8;
+            const pi = 3.14;
+
+    for this module.exports() is used , it is an object which makes some file available to other files.if nothing is passed and that file is required then empty object is passed.
+
+            module.exports() = "Hello";
+
+            require() -> a built-in function to include external modules exist in a sepearte file.
+
+        for example refer index1.js file
+
+
+# EXPORT IN DIRECTORIES
+If you want to require some modules from other files in the same directory then we have discussed above.
+Now we will export modules present in other directory..
+
+In the Students directory , there are three students information and i want to require all these students, then in that directory i have to create a file index.js
+
+                index.js requires Abhi.js , shubh.js, shubhu.js
+
+and i want this Students directory is required in index2.js , we simply write 
+
+                const Student  = require("./Students");
+                here Student will be an array of objects 
+
+                BACKEND1
+                   |--Students
+                   |      |--Abhi.js
+                   |      |--shubh.js
+                   |      |--shubhu.js
+                   |--index2.js
+
+
+
+now we are moving forward....
+
+# NPM (NODE PACKAGE MANAGER)
+NPM is the standard package manager for Node.js
+1> A package manager.
+        It is the library of packages (it is not exactly a library but we can imagine it for analogy)
+                it contains various packages like
+                express , react etc
+        
+                Packages -> code writeen by developers that we use by requiring.
+                        (Actual code hai jisse bahut saare developers world wide use kar rhe hai)
+2> CommandLine Tool.
+        With the help of Command line we can download many packages that provides us to download it any version,
+        and can manipulate information related to package.
+
+        command line ke through in saare packages ko dusre developers tak access karate hai
+
+3> Online registry.
+
+NPM kya hai?
+NPM ek digital bazaar hai jahan developers ke liye hazaaron packages available hain — har ek ek chhoti app jaisi hoti hai jo kisi specific kaam ke liye bani hoti hai. Jaise Play Store mein productivity apps, games, aur tools hote hain, waise hi NPM mein backend tools, frontend frameworks, testing libraries, aur aur bhi bahut kuch hota hai.
+
+no need to download npm manually, it get downloaded along with the node
+
+                to verify 
+                
+                run npm on your terminal from any directory
+
+                you will get a bunch of commands list that you can use for your project
+
+# INSTALLING PACKAGES USING NPM
+When you want to install the packages for your project , that is writeen by someone else but you want to use it
+        
+        npm install packageName or npm i packageName (i is basically alias for install)
+
+let's create another directory to use packages
+
+It is very important to know in which directory you have to or in which directory you have installed the package
+because the scope of package is limited to that directory only..
+
+Let's create a Figlet directory
+
+        npm i figlet  <!-- install the package in figlet directory -->
+
+        one folder and two json file is created..
+
+        1> node modules -> it is a folder that contains every installed dependency of our project.
+                        (jitne bhi packages , api's aur bhi use ho rhe h in your project iss folder mein honge)
+                        node modules apne aap ban jaata hai khud se nahi banana padta
+        
+        2> package-lock.json -> it records the exact version of installed dependency,
+                             including it's sub-dependency and their versions
+
+                isse ache se samjahte hai
+                if I need a package A for my project , we will download it using npm i A
+                and this package needs B to work, so this B also get installed along with package A.
+
+        3> package.json -> this file contains descriptive and functional metadata about a project, 
+                                such as name, version and dependencies
+
+
+        OUT OF 3 , THE MOST IMPORTANT FILES IS package.json.
+
+To work with figlet create an index.js file in your FigletDir 
+check FigletDir to work with a package.
+
+        
+        const figlet = require("figlet")  
+        <!-- in the double quote we will not use any directory related things for any packages,
+        packages ke liye ha yeh sab nahi likhte  -->
+
+        figlet("SHUBHU", function (err, data) {
+            if (err) {
+              console.log("Something went wrong...");
+              console.dir(err);
+              return;
+            }
+            console.log(data);
+        });
+
+        run node inde.js <!-- using the terminal make sure that your are in the correct directory -->
+
+# Why package.sjon is most important ?
+Suppose you have to send your code to some other developers then there's no need of sending all th three files 
+as the package.json contains all the descriptive and functional dependency for the project.
+    
+        bas package.json hai saath toh chinta ki kya hai baat
+        simply go to cwd 
+        and run ---   npm init
+        all the dependencies got reinstalled even get deleted by mistake.
+        Agar aapka khud ka package.json banana hai for any directory run npm init
+
+        kal ko jaake aga rkoi dependency install hogi toh woh sab yahi jaake store hogi
+
+
+# LOCAL V/S GLOBAL INSTALLATION
+If you install any package locally then it can work in that directrory you can't use it anywhere else outside that directory.
+
+but when you install a package gloablly you can manage it wherever you wish to....
+
+        npm i -g packageName <!-- just add a flag -g -->
+
+        still you can't be able to work with that package until you linked it
+        
+        for linking 
+        
+        npm link packageName
+
+
+# import v/s require
+There's not only way to use packages in our code.
+Till now we are only using the require and module.exports to use the packages that we have just installed
+
+Another way of doing the same thing is we import the packages..
+         
+        import {sum} from "./math.js";
+
+In the whole either we do require the packages or we just import it, there will not be any condition
+that we are doing both the things in the project....
+
+        VIDHI KE VIDHAN KE KHILAF HAI....
+
+To import any module you have to first export properties and functions 
+
+        under the math.js file
+        export const sum = (a, b) => a+b;
+        export const g = 9.8;
+
+        in index file
+        import { sum , g } from "./math.js";
+
+        Abhi ham itna likhe ke sum aur g use karenge toh error aayegi..
+        Sirf import and export karne se chize kaam nahi karengi..
+        In package.json we have to include "type": "module";
+
+It is because to load an E.S Module , one must have to set "type": "module" in package.json and use .mjs extension
+
+
+        -> require is older and import is new
+        -> With import we can selectively load only the pieces we need, which can save memory.
+           in require we cant select things.
+        -> Loading is synchronous with require but with import it is asynchronous.
+
+-------------------------x------------------------------x---------------------------x---------------------x-----------------------
+

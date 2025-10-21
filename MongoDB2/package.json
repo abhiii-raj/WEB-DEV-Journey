@@ -1,0 +1,14 @@
+{
+  "name": "mongodb2",
+  "version": "1.0.0",
+  "description": "Mongoose -> A library that creates connection between MongoDB and Node.js JavaScript Runtime",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "AbhiRaj",
+  "license": "ISC",
+  "dependencies": {
+    "mongoose": "^8.19.1"
+  }
+}
