@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Instagram Clone</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #fafafa;
+      margin: 0;
+      padding: 0;
+    }
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: white;
+      padding: 15px 40px;
+      border-bottom: 1px solid #dbdbdb;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    }
+    .logo {
+      display: flex;
+      align-items: center;
+      font-size: 24px;
+      font-weight: bold;
+      color: #262626;
+    }
+    .logo img {
+      width: 35px;
+      margin-right: 10px;
+    }
+    .btn-container button {
+      padding: 8px 16px;
+      margin-left: 10px;
+      border-radius: 5px;
+      border: none;
+      font-weight: bold;
+      cursor: pointer;
+    }
+    .login-btn {
+      background-color: #0095f6;
+      color: white;
+    }
+    .signup-btn {
+      background-color: #f0f0f0;
+      color: #333;
+    }
+    .welcome-box {
+      text-align: center;
+      margin-top: 100px;
+    }
+    .welcome-box h1 {
+      color: #333;
+      font-size: 36px;
+    }
+    .welcome-box p {
+      color: gray;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <div class="navbar">
+    <div class="logo">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" alt="Instagram Logo">
+      Instagram
+    </div>
+    <div class="btn-container">
+      <button class="login-btn">Log In</button>
+      <button class="signup-btn">Sign Up</button>
+    </div>
+  </div>
+
+  <!-- Welcome Section -->
+  <div class="welcome-box">
+    <h1>Welcome <%= username %> 👋</h1>
+    <p>Glad to see you on Instagram Clone</p>
+  </div>
+
+</body>
+</html>
