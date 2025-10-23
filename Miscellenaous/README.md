@@ -2,7 +2,7 @@
 Upto this point we have learnt about node js and it's framework and also about templating , through which we can create a template(view) and ejs file for a page which is using continously for every user.
 It is like a layout, like the blueprint of a form , the form is created once and each candidate can fill it's information in this blueprint, in the same way templating works, 
 
-Suppose you are on a instagram page and you are on your profile where you can see all the posts, followers count, followings count, and can edit your bio ,means the instagram company has to make layout for every user, the answer is big NOAH !!! the company makes a single page, layout using templating and based on user's data the page is shown/render to the user as a response..
+Suppose you are on a instagram page and you are on your profile where you can see all the posts, followers count, followings count, and can edit your bio ,means the instagram company has to make layout for every user, the answer is big NOAH !!! the company makes a single page, layout using templating and based on user's data the page is shown/rendered to the user as a response..
 
 So yeah, this is all about templating , sending / rendering dynamic web pages to the client as a response and also including static (css + js) files.
 
@@ -14,8 +14,8 @@ There are two types of requests a client can send to the server.
                 1> GET
                 > used to get some response.
                 > data (additional information) sent in query strings.
-                > since the length of url on browsers are limited , so we can send limited data with it.
-                > every data is sent is of String type.
+                > since the length of url on browsers are limited , so we can send limited   data with it.
+                > every data sent is of String type.
                 > When we sent additional infom through query strings , Data is visible in url 
                     which makes it less secure for the sensitive data.
                 > In short generally tabhi use karte hai jab koi response wapis chahiye 
@@ -35,6 +35,7 @@ There are two types of requests a client can send to the server.
 
 # Handling GET requests
 In order to handle get requests, all the data from the client comes into the query parameter of request object and we need to deconstruct the value.
+                
                 example.
                 app.get("/register", (req, res) => {
                     let {user, pass} = req.query;
@@ -57,9 +58,10 @@ Since the data not comes in the query parameter of the request object, all the d
                 
                 we need to parse this, to convert it into express readable form 
                 1> When the data is url encoded
+
                 __app.use(express.urlencoded({extended: true}));
                |   the parameter inside the use is a middleware, we'll discuss it later.
-               |--- kisi bhi type ke liye chalega , agar data url ke form mein ata ho toh 
+               |-- kisi bhi type ke liye chalega , agar data url ke form mein ata ho toh 
                     usse parse kar do   
 
                 app.use(express.urlencoded({extended: true}));
@@ -69,9 +71,9 @@ Since the data not comes in the query parameter of the request object, all the d
                     res.send(`<h1>Welcome to the page ${user}</h1>`);
                 });
 
-                in case we are sending json data then we can use,
+                In case we are sending json data then we can use,
+                
                 Agar aap chahte hai ki express json data ko bhi padh paaye then you can use,
                 app.use(express.json()); 
-
 
 # Revisiting OOPS in JS
