@@ -163,7 +163,7 @@ Now you will be able to apply the css even form the parent directory of the banc
                    |--index5.js
 
 
-If we have inside public more that one file to apply,
+If we have inside public more than one file to apply,
 
                 app.use(express.static(path.join(__dirname, "/public/js")));
                 app.use(express.static(path.join(__dirname, "/public/css")));
