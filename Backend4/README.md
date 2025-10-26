@@ -109,3 +109,134 @@ index.js + styles.css + indes.ejs since
 at this point index route have been created
 
 Implementing POST/posts
+When we submit the username and posts from the posts/new then the form will send a post request to the backend api's to store the data. and then redirect to the posts page.
+For this to implement..
+
+                <form method= "post" action="/posts">
+                    <input type = "text" placeholder = "username" class = "user">
+                    <textarea class = "content" placeholder = "write your content" ></textarea>
+                    <button> Submit the post </button>
+                </form>
+                
+                by default after submitting form it will send a get request type , so to avoid this 
+                we explictily define a method attribute set to post.
+
+                as soon as the form is submitted it will send a post request to the url /posts 
+                and it will be added to the backend (in this case -> posts array).
+
+                app.post("/posts", (req, res) => {
+                    let {username , content} = req.body;
+                    posts.push({username, content});
+                    res.redirect("/posts");  //by default a request is sent of get type.
+                });
+
+IMPLEMENTING GET/posts:id
+To check one post of user by using the id. (view route).
+Since we have not mentioned id's with our posts. so we need to modify it.
+
+                let posts = [
+                    {
+                        id: 1,
+                        username: "abhiraj",
+                        content: "hii i'm learning web-dev",
+                    },
+                    {
+                        id: 2,
+                        username: "shubham",
+                        content: "hii i'm learning generative ai",
+                    },
+                    {
+                        id: 3,
+                        username: "shubhuu",
+                        content: "got my first internship",
+                    },
+                ]
+
+                it is just and example with mentioned id's.
+
+                app.get("/posts/:id", (req, res) => {
+                    let {id} : req.params;
+                    let post = posts.find((p) => id === p.id);
+                    console.log(post); //just for checking.
+
+                });
+
+
+                make another show.ejs file that will recieve the post and show the content based on id
+
+                inside show.ejs
+
+                <h1> Here is your post in deatil </h1>
+                <h2>Post id: <%= post.id %></h2>
+                <div class= "post">
+                    <h2 class = "user"> <%= post.username %> </h2>
+                    <p> <%= post.content %> </p>
+                </div>
+
+                app.get("/posts/:id", (req, res) => {
+                    let {id} = req.params;
+                    let post = posts.find((p) => id === p.id);
+                    res.redirect("show.ejs", { post });
+                });
+
+                agar ham koi dura id search karenge aur woh id database/posts mein present nahi hai toh agar console.log kar rhe hai tab toh undefined dkhayega but, 
+                uss data ko render karwa rahe hai then error will be occured in that case, lekin abhi ke liye maan ke chalenge ki ham valid id ke hi babsis per post dekhe rhe hai.
+
+                kisis aur page se kisi aur page mein redirect hona hai toh ham anchor tag ka use kar rhe hai , then usmer href mein ham 
+                http likhenge n ki https
+
+                <a href="http://localhost:8080/posts/<%= post.id %>"> View in detail </a> //this is good practise
+                <a href="https://localhost:8080/posts/<%= post.id %>"> View in detail </a> //it will cause an error
+
+
+Now when you add a post and submit it then it gets shown on the posts page but when you press view in detail, then the page is not shown to you, because it doesn't have any id , and you are viewing each post based in id's.
+
+Request toh jaa rhi hai lekin kyuki id assign nahi hai toh problem hai,
+
+# Creating id's (using UUID);
+We can do it in a manual way, or we can do it automatically using UUIDs package
+Universal Unique Identifier -> it will automatically generate unique id's (different id's) of string type.
+
+                to install the package
+                npm i uuid
+
+                require the package
+                const{v4 : uuidv4} = require("uuid");
+
+                there's a function inside the uuid package as uuidv4();
+                replace the id's where you have hardcode the id's
+
+                and when you submit the form also include it.
+
+                app.post("/posts", (req, res) => {
+                    let {username, content} = req.body;
+                    let id = uuidv4();    //make change to this (use id only)
+                    posts.push({id, username, content});  //passed the newid
+                    res.redirect("/posts");
+                });
+
+# IMPLEMENTING PATCH /posts/:id
+update route -> to update specific post
+because we are editing specific data that's why we are using pach but you can also use put request
+
+                checking 
+                app.patch("/posts/:id", (req, res) => {
+                    let {id} = req.params;
+                    console.log(id);
+                    res.send("patch is working..");
+                });
+
+                we will send patch request from hoppscotch instead of directly sending
+
+                //implementing patch request to edit specific post
+                app.patch("/posts/:id", (req, res) => {
+                    let {id} = req.params;
+                    let newContent = req.body.content;
+                    console.log(id);
+                    console.log(newContent);
+                    res.send("patch is working..");
+                });
+
+We will create a route for this before we will make a link in the index.ejs for edit details
+
+                <a href="http://localhost:8080/posts/<%= post.id%>/edit">Edit details</a>
